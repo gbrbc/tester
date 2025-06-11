@@ -1,0 +1,380 @@
+   259	21:00	sudo e /etc/mail/access_smtp.hash
+   260	21:02	ls1 wea | mail pi@rpi3.sec.com
+   261	21:03	grep mail.sec.com /etc/mail/*
+   262	21:03	dir1 fre
+   263	21:03	dir1 fre | mail jmh065@sec.com
+   264	21:04	dir1 fre | mail jmh065@mail.sec.com
+   265	21:08	/usr/bin/sendmail -bt
+   266	21:12	sudo e /etc/mail/access_smtp.hash /etc/mail/local-host-names *
+   267	21:12	kill %
+   268	21:12	sudo e /etc/mail/access_smtp.hash /etc/mail/local-host-names &
+   269	21:13	rmp
+   270	21:22	echo $A
+   271	21:28	/usr/sbin/sendmail -bt
+   272	21:40	dig -x 192.168.1.208
+   273	21:42	dig rpi3.sec.com
+   274	21:44	ince ; sl
+   275	21:45	grep -3i rpi3 $M
+   276	21:46	echo '$=m' | sendmail -bt -d0.4
+   277	21:49	a
+   278	21:54	> 3,0 jmh065@rpi3.sec.com
+   279	21:54	Enter < ruleset > < address >
+   280	21:54	ADDRESS TEST MODE ( ruleset 3 NOT automatically invoked )
+   281	21:54	sec ( 536 ) % /usr/sbin/sendmail -bt
+   282	21:54	-rw-rw-r-- 1 reilly reilly 0 Jan 8 2024 fred12
+   283	21:54	From: GBRT < reilly@p124.sec.com >
+   284	21:54	To: jmh065@rpi3.sec.com
+   285	21:54	Date: Mon, 09 Jun 2025 21:27:54 -0400
+   286	21:54	[ part 3 - message/rfc822 - 668B ]
+   287	21:54	[ part 2 - message/delivery-status - 389B ( suppressed ) ]
+   288	21:54	<< < 503 5.0.0 Need RCPT ( recipient )
+   289	21:54	550 5.1.1 < jmh065@rpi3.sec.com > ... User unknown
+   290	21:54	<< < 550 5.7.1 < jmh065@rpi3.sec.com > ... Relaying denied
+   291	21:54	>> > DATA
+   292	21:54	... while talking to mail.sec.com.:
+   293	21:54	----- Transcript of session follows -----
+   294	21:54	sudo jmh065@rpi3.sec.com > ... Relaying denied )
+   295	21:55	sudo echo '$=w' | sendmail -bt
+   297	6:15	repl
+   298	6:17	v flo
+   302	6:23	mp3
+   303	6:40	vi + eventlog
+   304	7:15	ev 1
+   305	7:20	tail templog4
+   306	7:20	tail templog5
+   307	7:21	tail templog3
+   308	7:22	ev 2
+   309	7:23	tail templog{3,5}
+   311	7:25	sudo tcpdump -v port 53
+   312	7:26	xemacs /Src
+   313	7:29	grep sendm /etc/rc*
+   314	7:30	/usr/sbin/sendmail -bd -ODaemonPortOptions=port=4025 -d8.99 | & tee /tmp/dns2
+   315	7:30	sudo /usr/sbin/sendmail -bd -ODaemonPortOptions=port=4025 -d8.99 | & tee /tmp/dns2
+   316	7:30	psa sendma
+   317	7:36	s ;
+   318	8:18	ss Doctor last
+   319	8:19	i
+   320	8:19	p
+   321	8:19	editW
+   322	8:20	repl -cc all
+   324	9:03	ev 4
+   325	9:24	more ~/.emacs
+   326	10:39	bbc
+   330	11:51	startcook
+   331	11:57	psa therms
+   332	11:57	psa thermos
+   334	11:58	lah
+   335	11:58	lsh
+   336	11:58	tail debug.log
+   337	11:58	tail debug.log2
+   338	11:59	nood12
+   339	12:05	vi + ~/eventlog
+   340	12:06	createaday
+   342	13:15	undel 15475
+   344	13:15	wgrep k751
+   345	13:47	ss events
+   346	13:49	undel 15474
+   348	14:59	cd 3115/
+   349	14:59	grep -i oliver *
+   352	15:55	rm6
+   353	15:55	w
+   354	16:03	sil
+   355	16:03	xemacs $W
+   356	18:25	source XKL source XKL
+   357	18:28	v dox2
+   359	19:22	v SNIFF2
+   360	19:33	rmml
+   362	20:14	cat > /tmp/ll
+   366	21:37	jlince
+   367	22:02	v NONE2 MELATON
+   372	22:45	grep nomac $BSEC/*gnu
+   374	23:50	e $Y
+   375	23:52	crontab -e
+   378	3:52	rac
+   379	3:55	cat /tmp/11Jun
+   380	3:55	cal
+   382	8:10	v VIT1 SNIFF1 m1 ms LIBGBR LAMPSUN
+   383	8:11	cd $SM
+   385	8:11	more when_does_sun.cpp
+   386	8:13	more Sunclock.hpp
+   387	8:33	pushd /Src
+   389	8:34	dir Where_is_the_sun
+   390	8:35	find *sun* *Sun* -type f -exec grep -Hni shadow {} \;
+   396	8:37	tar cf /tmp/sun.tar .
+   431	9:30	rfn SUTTON
+   434	9:30	t2
+   435	9:30	t5
+   437	9:33	wgrep terr
+   438	9:35	crontab -l | grep spa_
+   439	9:37	from
+   442	9:37	e ~/HOUSE
+   451	9:39	rmm 15428 15429 15430 15417
+   454	9:39	which iv40
+   455	9:40	s 15383
+   470	9:40	rmm ; s invite:prev
+   471	9:40	scan `subj hanna 13131-999999`
+   472	9:41	rmm `subj hanna 13131-999999`
+   473	9:41	iv40
+   474	9:41	sfr Chenoa
+   475	9:41	rfr Chenoa
+   476	9:41	sfr c1gb
+   477	9:42	sfr c1gb 15333-15464
+   478	9:42	rfr c1gb 15333-15464
+   479	9:49	pushd $PY
+   480	9:50	grep "'''" *py
+   481	9:55	v dox1
+   482	9:57	state
+   483	9:57	ls ~/.ssh
+   484	9:57	pushd ~/.ssh
+   485	9:57	ls1 deplo
+   486	9:57	dir1 deplo
+   487	9:59	xemacs ~/.login
+   488	10:01	cd
+   490	10:01	psa ssh-age
+   492	10:03	more ssh
+   493	10:04	source XKL
+   497	10:06	; s
+   503	10:08	git config --global user.name gbrbc
+   504	10:09	git config --global user.email reilly@sci.brooklyn.cuny.edu
+   506	10:17	git clone ssh-agent -c > /tmp/,doit.$$
+   507	10:17	source /tmp/,doit.$$
+   508	10:17	xemacs
+   516	10:18	git init sun
+   518	10:19	git config --global user.name gbrbc ; git config --global user.email reilly@sci.brooklyn.cuny.edu
+   521	10:19	rm -rf sun
+   522	10:19	csh /tmp/d1
+   525	10:19	make
+   531	10:27	dir1 sun
+   532	10:27	cd Where_is_the_sun/
+   539	10:28	cp -i README.OPENWEATHER /Src/sun
+   544	10:34	rm spa_wait_azimuth
+   545	10:34	cat > .git_ignore
+   548	10:37	ln -s .git_ignore `pwd`/.gitignore
+   549	10:37	git reset --soft 'HEAD~1'
+   550	10:37	git commit -m "Add readme from original dir"
+   551	10:38	git push origin sun
+   552	10:38	git push origin gbrbc/sun
+   556	10:43	grep sun ~/.login
+   557	10:43	ssh-add ~/.ssh/sundeploy
+   563	10:45	git push origin main
+   569	10:50	kill 82082
+   570	10:50	vi ~/.login
+   571	10:51	source ~/.login
+   572	10:51	ssh -T -ai ~/.ssh/sundeploy.pub git@github.com
+   578	10:54	psa agent
+   579	10:55	kill 95393
+   581	10:56	git rm --cached spa_wait_azimuth
+   584	11:13	dir1 shad
+   587	11:13	dir
+   588	11:13	cat .gitignore
+   589	11:13	rm .gitignore
+   590	11:14	mv .git_ignore .gitignore
+   593	11:14	git commit -m "add shadow"
+   595	11:14	more setup
+   596	11:15	./setup
+   599	11:15	env | grep -i ssh
+   600	11:15	psa 94781
+   601	11:15	vi setup
+   604	11:16	psa 111144
+   607	11:18	ssh-keygen -C "reilly@sci.brooklyn.cuny.edu"
+   610	11:20	csh -xv setup
+   615	11:22	setenv SSH_AGENT_PID 113070
+   618	11:24	env | grep SSH
+   619	11:24	dir /tmp/ssh-KDXmJS5iNj12/agent.94779
+   620	11:24	unsetenv SSH_AUTH_SOCK
+   622	11:26	ssh-add -L -v -v
+   624	11:26	tail ~/.cshrc
+   625	11:27	cat ~/.cshrc.ssh
+   626	11:27	dir /tmp/ssh-x7kpqxrYom4T/agent.113068
+   627	11:27	setenv SSH_AUTH_SOCK /tmp/ssh-x7kpqxrYom4T/agent.113068 ;
+   628	11:27	setenv SSH_AGENT_PID 113070 ;
+   629	11:28	ssh-add -L -v -v -v
+   634	11:29	psa ssh-agent
+   635	11:29	v m2
+   637	11:30	chmod a-x setup
+   639	11:38	vi .git/config
+   640	11:38	vi ~/.gitconfig
+   646	11:40	git ls-files
+   649	11:42	jrt
+   654	11:43	s.
+   688	12:02	sf
+   693	12:03	sc ;
+   695	12:03	undel 15501 15502 15503
+   698	12:03	rfn SPAM
+   701	12:04	sudo e $A
+   702	12:04	e $WAY
+   704	12:10	n
+   706	12:15	rfn MS
+   710	12:16	m
+   711	12:16	cm40
+   713	12:17	env DISPLAY=localhost:11:0 xterm
+   714	12:17	env DISPLAY=localhost:13:0 xterm
+   715	12:17	env DISPLAY=localhost:14:0 xterm
+   716	12:18	env DISPLAY=localhost:11.0 xterm
+   717	12:18	env DISPLAY=localhost:13.0 xterm
+   718	12:18	env DISPLAY=localhost:14.0 xterm
+   719	12:18	vi ~/ALERT_DISPLAYS
+   720	12:18	who
+   721	12:19	env DISPLAY=localhost:16.0 xterm
+   722	12:19	env DISPLAY=localhost:17.0 xterm
+   728	12:50	,
+   737	12:51	what
+   739	12:53	cd /Src/sun
+   747	12:58	source setup
+   750	12:58	git remote -v
+   751	12:59	git remote ls-files
+   752	13:00	git remote show
+   755	13:03	edit
+   756	13:04	scl
+   757	13:04	resp
+   758	13:05	mesg n
+   762	13:10	git switch -b shadow
+   763	13:11	git switch -c shadow
+   766	13:14	mkdir /Src/shadow
+   767	13:14	rmdir /Src/shadow
+   768	13:14	cd /Src
+   769	13:14	git init shadow
+   770	13:14	cd shadow
+   771	13:15	pushd ../sun
+   772	13:15	find . -type f -exec grep -Hni shadow {}
+   773	13:15	find . -type f -exec grep -Hni shadow {} \;
+   775	13:19	pushd
+   777	13:19	git branch -d shadow
+   781	13:21	git branch -D shadow
+   783	13:22	bad ; notme
+   787	13:23	rmn
+   789	13:27	pushd /Src/shadow/
+   791	13:28	w > a
+   792	13:28	w > b
+   793	13:28	w > c
+   794	13:28	echo "main branch" > d
+   795	13:28	tar cf /tmp/let.tar .
+   799	13:29	tar cf /tmp/let.tar [a-d]
+   801	13:29	cd ..
+   802	13:29	ls shadow
+   803	13:29	ls -ls shadow
+   804	13:29	ls -lsa shadow
+   805	13:29	rm -rf shadow/
+   806	13:30	git init -C "brendanreillybc@gmail.com"
+   807	13:31	git init tester
+   808	13:31	cd tester
+   810	13:31	tar tvf /tmp/let.tar
+   811	13:31	tar xpf /tmp/let.tar
+   814	13:32	git commit -m 'see about branch'
+   815	13:33	git push origin tester
+   816	13:33	git push -U origin tester
+   818	13:33	PWD
+   822	13:34	ssh -T git@github.com
+   825	13:34	git push -u origin master
+   826	13:34	git push -u tester master
+   827	13:36	which gh
+   828	13:36	sudo apt install gh
+   829	13:36	rehash
+   832	13:39	ls ~/.ssh/gbrbc*
+   833	13:40	rm ~/.ssh/gbrbc*
+   835	13:41	cat /Src/sun/setup
+   836	13:41	ssh-agent -k || /bin/true
+   837	13:41	ssh-agent -c | grep -v echo > ~/.cshrc.ssh
+   838	13:41	source ~/.cshrc.ssh
+   843	13:43	gh auth login
+   844	13:50	source /tmp/token
+   846	13:50	gh repo create
+   850	13:54	git branch -c breadster
+   852	13:56	git switch -c breadster
+   856	13:57	git commit -m "Bredster"
+   857	13:58	git push -u origin main
+   859	13:58	ssh-add ~/.ssh/gbrbcdeploy
+   863	14:12	git help branch
+   864	14:12	git branch -r
+   866	14:12	git help branch | grep -i sele
+   867	14:13	git help checkout
+   868	14:13	git help checkout | grep -i selec
+   869	14:13	git checkout breadster
+   872	14:14	env | grep -i gh
+   873	14:14	gh push origin master
+   874	14:14	gh help repo
+   877	14:17	h | grep ssh
+   878	14:17	ssh-keygen -C "brendanreillybc@gmail.com"
+   880	14:19	gh repo list
+   881	14:19	h | grep -- -a
+   883	14:22	l
+   885	14:22	cp /Src/run/setup /tmp/setupbr
+   886	14:22	cp /Src/sun/setup /tmp/setupbr
+   887	14:22	e /tmp/setupbr
+   888	14:23	source /tmp/setupbr
+   889	14:23	git push -u origin breadster
+   891	14:24	git branch -a
+   892	14:25	git help push
+   893	14:26	git push --verbose -u origin breadster
+   894	14:26	git push --verbose --verbose -u origin breadster
+   895	14:26	ince
+   896	14:26	sl
+   897	14:30	v m3
+   898	14:32	s
+   899	14:32	rmm
+   900	14:33	drugs
+   902	14:34	bcountdown
+   903	14:37	ssh-add -L
+   904	14:38	cat ~/.ssh/bctester.pub
+   907	14:39	ls -a
+   908	14:39	find . | grep -i log
+   909	14:39	git logs
+   910	14:39	git log
+   911	14:42	cat .git/config
+   912	14:43	pushd /tmp
+   913	14:43	git clone https://github.com/gbrbc/breadster.git
+   914	14:45	git clone https://github.com/gbrbc/sun.git
+   915	14:45	ls sun
+   918	14:46	cd sun
+   919	14:46	diff -r /Src/sun .
+   920	14:47	cd /tmp
+   922	15:09	touch /tmp/bedroom
+   923	15:09	bac
+   924	15:22	h | grep push
+   925	15:22	dirs
+   926	15:22	popd
+   927	15:22	git push --verbose -u breadster origin
+   928	15:22	h | grep branc
+   930	15:28	git push --verbose -u breadster master
+   934	15:32	csh /tmp/d7
+   939	15:34	h | grep check
+   943	15:34	git commit -m "bread d changed"
+   951	15:41	git push
+   953	15:43	git push breadster master
+   956	15:43	git branch
+   958	15:44	more d
+   961	15:45	h | grep git
+   963	15:45	git commit -m "gbrmail into d"
+   964	15:45	git push origin master
+   965	15:45	git push origin
+   967	15:46	git push origin breadster
+   968	15:46	git push breadster
+   971	15:48	h | grep -- -d
+   972	15:49	h | grep -- -D
+   973	15:49	cat d
+   974	15:49	git branch -D breadster
+   975	15:50	h | grep breadst
+   977	15:50	cp /tmp/d .
+   979	15:50	vi d
+   980	15:50	ls
+   981	15:50	pwd
+   983	16:01	git switch -c bren2
+   984	16:02	head d
+   985	16:03	git branch --all
+   987	16:03	gid commit -m "d has sec init"
+   988	16:03	git commit -m "d has sec init"
+   989	16:04	git remote add bren2 git@github.com:gbrbc/tester.git
+   990	16:04	git push bren2
+   992	16:06	git merge bren2
+   993	16:10	git pull
+   994	16:14	h | grep bren2
+   995	16:14	git switch -c bren3
+   996	16:15	git add .
+   997	16:15	git commit -m "bren3 rpi"
+   998	16:15	h
+   999	16:15	git remote add bren3 git@github.com:gbrbc/tester.git
+  1000	16:15	git push bren3
+  1001	16:16	git checkout -
+  1002	16:16	head c
+  1003	16:18	git branch -D bren3
+  1004	16:19	h > 11junTry

@@ -473,9 +473,11 @@ std::vector<time_t> avgtimet;
 
 #define log172(format, ...)                                                    \
   {                                                                            \
-    char buffer[1024];                                                         \
-    char mtimebuf[125];                                                        \
-    mfillintime(mtimebuf);                                                     \
+      mfillintime(mtimebuf);                                                   \
+      fprintf(logd, "%s F ", mtimebuf);                                        \
+      mtimebuf[0] = '\0';                                                      \
+      fprintf(logd, format, ##__VA_ARGS__);                                    \
+      fprintf(logd, " at line %d\n", __LINE__);                                \
     sprintf(buffer, format, ##__VA_ARGS__);                                    \
     putnetlog("172.16.0.1", ThermoStatus->readlogport(), buffer);	\
   }

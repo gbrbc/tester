@@ -473,11 +473,9 @@ std::vector<time_t> avgtimet;
 
 #define log172(format, ...)                                                    \
   {                                                                            \
-      mfillintime(mtimebuf);                                                   \
-      fprintf(logd, "%s F ", mtimebuf);                                        \
-      mtimebuf[0] = '\0';                                                      \
-      fprintf(logd, format, ##__VA_ARGS__);                                    \
-      fprintf(logd, " at line %d\n", __LINE__);                                \
+    char buffer[1024];                                                         \
+    char mtimebuf[125];                                                        \
+    mfillintime(mtimebuf);                                                     \
     sprintf(buffer, format, ##__VA_ARGS__);                                    \
     putnetlog("172.16.0.1", ThermoStatus->readlogport(), buffer);	\
   }
@@ -497,14 +495,9 @@ std::vector<time_t> avgtimet;
   {                                                                            \
     if (debug)                                                                 \
     {                                                                          \
-      std::lock_guard<std::mutex> lock(timebuf_mut3);                          \
-      char mtimebuf[125];                                                      \
-      mfillintime(mtimebuf);                                                   \
-      fprintf(logd, "%s F ", mtimebuf);                                        \
-      mtimebuf[0] = '\0';                                                      \
-      fprintf(logd, format, ##__VA_ARGS__);                                    \
       fprintf(logd, " at line %d\n", __LINE__);                                \
       fflush(logd);                                                            \
+      std::lock_guard<std::mutex> lock(timebuf_mut3);                          \
     }                                                                          \
   }
 

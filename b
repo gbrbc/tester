@@ -1,230 +1,87 @@
-;;; -*- Mode: Lisp -*- sec  thurs
+;;; -*- Mode: Lisp -*-
 ;;;
 ;;; Gnu Emacs initialization file (manta incarnation)
 
 ;;; General initializations
 ;;;
-;
-
-;; fix email buffers that are multibyte
-;; https://emacs.stackexchange.com/questions/5732/how-to-strip-invalid-utf-8-characters-from-a-string  
-
-
-;to start saving sessions
-; https://ftp.gnu.org/old-gnu/Manuals/emacs-20.7/html_node/emacs_424.html
-
-;;stop deleting a region with backspace/del
-(setq delete-active-region 'nil)
-
-(advice-add 'risky-local-variable-p :override #'ignore)
-
-;;tired of C-Xp
-(global-set-key "\C-xp" 'other-window)
-
-
-;;url space remover for linux
-;;(fset 'urlspace   [?\M-< escape ?% return ?! ?\M-< ?\M-% ?  return return ?!])
-(fset 'urlspace   [?\M-< escape ?% return ?! ?\M-< ?\M-% ?  return return ])
-(global-set-key "\C-cs" 'urlspace)
-(global-unset-key "\M-j")
-
-;;(fset 'fix23
-;;   (kmacro-lambda-form [?\C-e ?\C-b ?\C-@ ?\C-a ?\C-w ?\C-? ?\C-q ?\C-i ?\C-e ?\C-f] 0 "%d"))
-;;(global-set-key "n" 'fix23)
-
-;;Thu Feb 22 11:20:50 EST 2024
-(setq abbrev-suggest 't)
+;;
+;; on mac
+;; size 16
+;; Lucida   Lexi Mono
+;;
+;;Sun Oct 10 17:25:18 EDT 2021
+;; stuff about cursor, which is good on Mac but huge on emacs from sec
+;; checked  cursor-type    x-pointer-shape
+;;   https://emacs.stackexchange.com/questions/14274/how-do-you-change-the-text-cursor-height-and-thickness
 
 
 
 
-; 8 jul 2020
-; should probably be in a file Mode thingie
-;;(load "preview-latex.el" nil t t)
-;info preview-latex
 
-; Sat Mar  4 22:52:52 EST 2017
-; try to make window comparisons ignore whitespace
-(setq compare-ignore-whitespace t)
-
-
-(message "%s"  "e0")
-
-(setq inhibit-startup-message t)
-
-;(setq initial-scratch-message nil)    Fri May 22 20:32:10 EDT 2015   taken out due to error message
-
-
-(setq startup-screen-inhibit-startup-screen t)
-
-(setq debug-on-error t)
-
-
-(setq baud-rate 9600)
-
-
-;(setq amislow (substring (getenv "REMOTEHOST") 0 4) )
-
-; (if (or
-;      (string= (substring (getenv "REMOTEHOST") 0 4) "170.") 
-;      (string= (substring (getenv "REMOTEHOST") -1 9) "myvzw.com")
-;      )
-;(progn     
-;					; test
-;     (setq isearch-slow-terminal-mode t)
-;   (setq search-slow-window-lines 1)
-;   (setq i-am-slow 1)
-;)					;end progn
-;)					;end if
-
-;;;;Sun Feb 17 15:21:03 EST 2013
-;;     Menu buffer to show you what files it has visited.  You can
-;;     inhibit that by setting `inhibit-startup-buffer-menu' to `t'.
-
-(setq inhibit-startup-buffer-menu t)
-
-
+(add-hook 'Perl-mode-hook (lambda () (font-lock-mode -1)))
+(add-hook 'perl-mode-hook (lambda () (font-lock-mode -1)))
+                                        ;
+; test
+;(setq isearch-slow-terminal-mode t)
+;(setq search-slow-window-lines 12)
 ;;;;
 
-;Tue Oct  4 09:21:09 EDT 2005
-; testing seeing compilation output live
-(require 'compile)
-(setq compilation-scroll-output t)
-(setq compile-command "make ")
-
-
-
 (menu-bar-mode -1)
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
-(tooltip-mode -1)
+;(scroll-bar-mode -1)
+;(tooltip-mode -1)
+;X(transient-mark-mode -1)
+
+
+;(normal-erase-is-backspace-mode 1)
+
+(defun makesig (&optional arg)
+  "I am quite at a loss"
+  (interactive "P")
+
+
+ (insert (format "Best regards,\n\n\nBrendan\n\n")
+
+    
+);end if 
+ (backward-char 1)
+
+)
+;end defun
+
+(global-set-key "\C-xs" 'makesig)
 
 
 ;
 ; Stuff added for BSDI 4.3 to make fakemail work/ignore Wed Oct  2 10:28:11 EDT 2002
 ;
 
+;;(setq send-mail-function 'smtpmail-send-it)
+;;(setq smtpmail-default-smtp-server "sec.com")
+;;(setq smtpmail-smtp-service "smtp")
+;;(setq smtpmail-local-domain "sec.com")
+;;(setq smtpmail-debug-info t) 
+;;;(setq smtpmail-debug-info 'nil) ;; if no debug info needed
+;;(load-library "smtpmail")
+;;(setq smtpmail-code-conv-from nil)
+;;(setq user-full-name "G B Reilly")
+
+;;     (setq auto-mode-alist (cons '("\\Rakefile\\'" . ruby-mode) auto-mode-alist))
+     (setq auto-mode-alist (cons '("\\.make\\'" . makefile-mode) auto-mode-alist))
+     (setq auto-mode-alist (cons '("\\.inl\\'" . c++-mode) auto-mode-alist))
+     (setq auto-mode-alist (cons '("\\.in\\'" . c++-mode) auto-mode-alist))
+     (setq auto-mode-alist (cons '("\\.pro\\'" . c++-mode) auto-mode-alist))
+     (setq auto-mode-alist (cons '("\\.emacs\\'" . emacs-lisp-mode) auto-mode-alist))
 
 
-(setq send-mail-function 'smtpmail-send-it)
-(setq smtpmail-default-smtp-server "sec.com")
-(setq smtpmail-smtp-service "smtp")
-(setq smtpmail-local-domain "sec.com")
-(setq smtpmail-debug-info t) 
-;(setq smtpmail-debug-info 'nil) ;; if no debug info needed
-(load-library "smtpmail")
-(setq smtpmail-code-conv-from nil)
-(setq user-full-name "G B Reilly")
-
-
-
-
-(defvar interpreter-mode-alist
-  '(("perl" . perl-mode)
-    ("perl5" . perl-mode)
-    (".cshrc" . shell-script-mode)
-    (".login" . shell-script-mode)
-    ("miniperl" . perl-mode)
-    ("wish" . tcl-mode)
-    ("config.*" . shell-script-mode)
-    (".*config" . shell-script-mode)
-    ("wishx" . tcl-mode)
-    ("tcl" . tcl-mode)
-    ("tclsh" . tcl-mode)
-    ("awk" . awk-mode)
-    ("mawk" . awk-mode)
-    ("nawk" . awk-mode)
-    ("gawk" . awk-mode)
-    ("scm" . scheme-mode)
-    ("ash" . sh-mode)
-    ("bash" . sh-mode)
-    ("bash2" . sh-mode)
-    ("csh" . sh-mode)
-    ("conf" . sh-mode)
-    ("dtksh" . sh-mode)
-    ("es" . sh-mode)
-    ("itcsh" . sh-mode)
-    ("jsh" . sh-mode)
-    ("ksh" . sh-mode)
-    ("oash" . sh-mode)
-    ("pdksh" . sh-mode)
-    ("rc" . sh-mode)
-    ("rpm" . sh-mode)
-    ("sh" . sh-mode)
-    ("sh5" . sh-mode)
-    ("tcsh" . sh-mode)
-    ("wksh" . sh-mode)
-    ("wsh" . sh-mode)
-    ("zsh" . sh-mode)
-    ("tail" . text-mode)
-    ("more" . text-mode)
-    ("less" . text-mode)
-    ("alias" . alias-mode)
-    ("cf" . makefile-mode)
-    ("defs" . makefile-mode)
-    ("pg" . text-mode))
-  "Alist mapping interpreter names to major modes.
-This alist applies to files whose first line starts with `#!'.
-Each element looks like (INTERPRETER . MODE).
-The car of each element is compared with
-the name of the interpreter specified in the first line.
-If it matches, mode MODE is selected.")
-
-(autoload 'alias-mode "/u/reilly/emacs/alias-mode.el" "ALIAS major mode." t)
-
-(autoload 'changed-mode "/u/reilly/emacs/changed-html.el" "CHANGED major mode." t)
-
-(defvar interpreter-mode-alist
-  '(("perl" . perl-mode)
-    ("perl5" . perl-mode)
-    ("miniperl" . perl-mode)
-    ("wish" . tcl-mode)
-    ("wishx" . tcl-mode)
-    ("config.*" . shell-script-mode)
-    (".*config" . shell-script-mode)
-    ("tcl" . tcl-mode)
-    ("tclsh" . tcl-mode)
-    ("awk" . awk-mode)
-    ("mawk" . awk-mode)
-    ("nawk" . awk-mode)
-    ("gawk" . awk-mode)
-    ("scm" . scheme-mode)
-    ("ash" . sh-mode)
-    ("bash" . sh-mode)
-    ("bash2" . sh-mode)
-    ("csh" . sh-mode)
-    ("conf" . sh-mode)
-    ("dtksh" . sh-mode)
-    ("es" . sh-mode)
-    ("itcsh" . sh-mode)
-    ("jsh" . sh-mode)
-    ("ksh" . sh-mode)
-    ("oash" . sh-mode)
-    ("pdksh" . sh-mode)
-    ("rc" . sh-mode)
-    ("rpm" . sh-mode)
-    ("sh" . sh-mode)
-    ("sh5" . sh-mode)
-    ("tcsh" . sh-mode)
-    ("wksh" . sh-mode)
-    ("wsh" . sh-mode)
-    ("zsh" . sh-mode)
-    ("tail" . text-mode)
-    ("more" . text-mode)
-    ("less" . text-mode)
-    ("html" . changed-mode)
-    ("pg" . text-mode))
-  "Alist mapping interpreter names to major modes.
-This alist applies to files whose first line starts with `#!'.
-Each element looks like (INTERPRETER . MODE).
-The car of each element is compared with
-the name of the interpreter specified in the first line.
-If it matches, mode MODE is selected.")
-
-
-
-
-;      (autoload 'php-mode "/u/reilly/emacs/php-mode" "PHP editing mode" t)
+;      (autoload 'php-mode "/u/reilly/emacs/php-mode.elc" "PHP editing mode" t)
 ;      (add-to-list 'auto-mode-alist '("\\.php3\\'" . php-mode))
 ;      (add-to-list 'auto-mode-alist '("\\.php4\\'" . php-mode))
 ;      (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -232,28 +89,7 @@ If it matches, mode MODE is selected.")
 ; For sunrise/sunset
 ;
 ;
-;https://www.google.com/maps/place/353+Lexington+Ave,+New+York,+NY+10016/@40.7498682,-73.9768714,18.95z/data=!4m2!3m1!1s0x89c25903e243cf89:0xde4834472507557f
-
-(setq calendar-location-name "SEC, NY")
-     (setq calendar-latitude 40.756654)
-     (setq calendar-longitude -73.971685)
-
-
-;(setq calendar-location-name "Natick")
-;     (setq calendar-latitude 42.34560)
-;     (setq calendar-longitude -71.35792)
-
-
-
-;(setq calendar-location-name "Rivers Abode, CT")
-;     (setq calendar-latitude 41.05893)
-;     (setq calendar-longitude -73.56852)
-
-;(setq calendar-location-name "The Park, NY")
-;     (setq calendar-latitude 40.7464)
-;     (setq calendar-longitude -73.910869)
-
-;phila
+(setq calendar-location-name "Greenwich,CT")
 ;     (setq calendar-latitude 39.945387)
 ;     (setq calendar-longitude -75.153405)
 
@@ -293,96 +129,6 @@ If it matches, mode MODE is selected.")
  (backward-char 1)
 );end defun
 
-(defun makesig (&optional arg)
-  "I am quite at a loss"
-  (interactive "P")
-
-
- (insert (format "Best regards,\n\n\nBrendan\n\n")
-
-    
-);end if 
- (backward-char 1)
-
-)
-;end defun
-
-
-
-
-(defun makesigw (&optional arg)
-  "I am quite at a loss"
-  (interactive "P")
-
-
- (insert (format "Warmest regards,\n\n\nBrendan\n\n")
-
-    
-);end if 
- (backward-char 1)
-
-)
-;end defun
-
-;;fix to put ending date using --date="next hour"
-(fset 'dateStamp2
-   [?\[ ?s ?t ?a ?r ?t ?  ?\C-u escape ?! ?d ?a ?t ?e return ?\C-e ?\] return return return return return ?\[ ?e ?n ?d ?  ?\C-u escape ?! ?d ?a ?t ?e ?  ?- ?- ?d ?a ?t ?e ?= ?\" ?n ?e ?x ?t ?  ?h ?o ?u ?r ?\" return ?\C-e ?\] ?\C-r ?s ?t ?a ?r ?\C-n])
-
-
-
-
-
-(fset 'dateStamp
-   [?\C-a ?\C-o ?\C-o ?\[ ?\C-u ?\M-! ?d ?a ?t ?e return ?\C-a ?\C-k ?\C-y ?\] ?\C-a ?\C-k ?\C-k ?\C-k ?\C-y ?\C-u ?\C-y ?\C-f ?e ?n ?d ?  ?\C-a ?\C-o ?\C-o ?\C-p ?\C-p ?\C-n])
-
-(fset 'bracketspeaker
-   "\C-a\C-kstsart\C-?\C-?\C-?\C-?\C-?\C-?[start \C-y]\C-m\C-m\C-m[end \C-y]\C-a\C-p\C-p\C-m")
-
-
-(setq mslog
-   [?\C-u ?\M-! ?d ?a ?t ?e ?  ?+ ?\" ?% ?F ?  ?% ?R ?\" return ?\C-e ?\C-q ?\C-i])
-
-
-
-(global-set-key "\C-x:" 'mslog)
-
-(global-set-key "\C-xt" 'dateStamp2)
-(global-set-key "\C-x%" 'bracketspeaker)
-
-
-
-
-(defun makesigy (&optional arg)
-  "I am quite at a loss"
-  (interactive "P")
-
-
- (insert (format "XO\n\n\nBrendan\n\n")
-
-    
-);end if 
- (backward-char 1)
-
-)
-;end defun
-
-
-(defun makesigt (&optional arg)
-  "I am quite at a loss"
-  (interactive "P")
-
-
- (insert (format "88\n\n\nBrendan\n\n")
-
-    
-);end if 
- (backward-char 1)
-
-)
-;end defun
-
-
-
 
 (defun makecaleasy00 (&optional arg)
   "I am quite at a loss"
@@ -403,9 +149,6 @@ If it matches, mode MODE is selected.")
 )
 
 (global-set-key "\C-x\C-d" 'makecaleasy)
-(global-set-key "\C-xs" 'makesig)
-(global-set-key "\C-xw" 'makesigw)
-;(global-set-key "\C-xt" 'makesigt)
 
 
 
@@ -414,65 +157,68 @@ If it matches, mode MODE is selected.")
 (setq-default sort-fold-case t)
 
 ;;; if available make a mark when marking region
-(setq-default transient-mark-mode t)
+;;;(setq-default transient-mark-mode t)
 
 
 (setq inhibit-startup-message t)	; skip the startup message
 
 
 
-;;WHAT IS THIS?  (setq inhibit-local-variables t)	; act on local variables
-;;it blows that it will not stop asking
-(setq enable-local-variables ":all")
-
-(setq local-enable-local-variables 't)
-
-(setq enable-local-eval t)
-
-
-
-(setq enable-local-variables t)
-(setq enable-recursive-minibuffers t)
-(setq hack-local-variables t)
-
-
-
-
-(setq default-major-mode 'text-mode)	; Text Mode is the default
-(setq text-mode-hook			; Auto-Fill on in Text Mode buffers
-      '(lambda nil (auto-fill-mode 0)
-	 (setq fill-column 63)			; fill column is 55
+;1 (setq inhibit-local-variables t)	; act on local variables
+;1 (setq enable-local-variables t)
+(setq default-major-mode 'fundamental-mode)	; Text Mode is the default
+;(setq text-mode-hook			; Auto-Fill on in Text Mode buffers
+;      '(lambda nil (auto-fill-mode 1)
+;	 (setq fill-column 63)			; fill column is 55
 ;           (or
-;	    (string-equal '"calendar" filename)
+;	    (string-match '"calendar" filename)
 ;	       (progn (setq fill-column 9999999)) ; fill column is infinite
 ;
 ;	     )
 
-))
-(setq c-mode-hook
-      '(lambda nil (setq comment-column 48)
-	           (modify-syntax-entry 43 "w")
-	           (modify-syntax-entry 95 "w")
-		   (setq case-fold-search t)
-;new stuff
-		   (setq c-auto-newline nil)
-		   (setq c-tab-always-indent nil)
-		   (setq c-indent-level 6)
-		   (setq c-continued-statement-offset 0)
-		   (setq c-brace-offset 0)
-		   (setq c-argdecl-indent 4)
-		   (setq c-label-offset -2)
+;)
+;)
 
-;(global-set-key "control-meta-h" 'backward-kill-word)
+(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 
 
-))
-(setq fill-column 55)			; fill column is 55
+;;;(setq c-mode-common-hook
+;;;      '(lambda nil (setq comment-column 48)
+;;;         (abbrev-mode -1)
+;;;	           (modify-syntax-entry 43 "w")
+;;;	           (modify-syntax-entry 95 "w")
+;;;		   (setq case-fold-search t)
+;;;;new stuff
+;;;		   (setq indent-tabs-mode nil)
+;;;		   (setq c-auto-newline nil)
+;;;		   (setq c-tab-always-indent nil)
+;;;		   (setq c-indent-level 3)
+;;;		   (setq c-continued-statement-offset 0)
+;;;		   (setq c-brace-offset 0)
+;;;		   (setq c-argdecl-indent 0)
+;;;                   (setq c-label-offset -2)
+;;;                   (global-unset-key "¿")
+;;;(transient-mark-mode -1)
+;;;
+;;;(setq hide-ifdef-shadow t)
+;;;  (setq hide-ifdef-initially t) 
+;;;  (hide-ifdef-mode 1)
+;;;
+;;;
+;;;
+;;;))
+
+
+
+
+
+
+(setq fill-column 65)			; fill column is 55
 (put 'eval-expression 'disabled nil)
 (setq auto-save-interval 10)		; 10 chars between auto-saves
 (setq echo-keystrokes 1)		; wait 1 sec before echo at bottom
-
 
 (setq enable-recursive-minibuffers t)	; we can handle 'em
 (setq make-backup-files 'nil)		; backup files necessary
@@ -516,40 +262,20 @@ If it matches, mode MODE is selected.")
 
 ;(global-set-key "\C-x\C-r" 'addreply)
 
-
-
-;;; On the UNIX PC, c-@ doesn't seem to make its way to Gnu Emacs.  So
-;;; simply define M-<space> to do set-mark.  Also, the "delete" key is
-;;; in an annoying place--swap the functionality of the delete and back
-;;; space keys.
-
-
 ;(load "~/clsc.elc")
 ;(load "~/rev.elc")
 
 ; Need to eliminate the need for using ^C
 
 (global-set-key "" 'next-error)
-(global-set-key "c" 'save-buffers-kill-terminal)
 (global-set-key "m" 'compile)
 (global-set-key "g" 'goto-line)
-(global-set-key "r" 'addrev)
 
 
 (put 'narrow-to-region 'disabled nil)
 
-; fix calendar for hines
-;(defun hinescal () "fix"  (progn ( insert "\\month")))
-(defun hinescal (&optional arg) "fix"  (interactive "P")  (progn ( insert (format-time-string "%Y-%h-%d %H:%M:%S" (current-time))) (insert "\t")))
-;(current-time)   from time.el.gz
-;%Y-%h-%d %H:%M:%S
-;(fset 'hineskbd   "\C-[x\C-[OA\C-[OA\C-m\C-[OA\C-m\C-x")
-
-(global-set-key "h" 'hinescal)
-
-
 ;(setq display-time-day-and-date t)	;show day, mon, date
-(setq display-time-format "%a %H:%M")
+(setq display-time-format "%A")
 (setq display-time-mail-file (expand-file-name "~/.real_mail"))
 (display-time)				;Marvin - what time is it?
 (if (not (string= (getenv "HOME") "/root"))
@@ -569,8 +295,6 @@ If it matches, mode MODE is selected.")
 ;;
 ; new from Germany
 (setq all-christian-calendar-holidays t)
-(setq all-islamic-calendar-holidays t)
-(setq all-hebrew-calendar-holidays t)
 (setq calendar-date-display-form
       '((if dayname (concat dayname ", ")) day " " monthname " " year))
 (setq calendar-time-display-form
@@ -578,6 +302,8 @@ If it matches, mode MODE is selected.")
                  (if time-zone " (") time-zone (if time-zone ")")))
 
 ;;
+;(normal-erase-is-backspace-mode 1)  
+
 
 (add-hook 'diary-display-hook 'fancy-diary-display)
 ;;;(add-hook 'diary-hook 'appt-make-list)
@@ -606,60 +332,25 @@ If it matches, mode MODE is selected.")
 ; SEC console specialities
 ;
 
-;(if (string= (getenv "TERM") "ibmpc3")
-;    (progn
-;      (global-set-key "?" 'backward-kill-word)
-;    )
-;)
+(if (string= (getenv "TERM") "ibmpc3")
+    (progn
+      (global-set-key "ˆ" 'backward-kill-word)
+    )
+)
 
 ;;; archive outgoing messages
 
 
 ;(load "/log/MOZART/asa.elc")
-(defvar mh-progs "/usr/bin/mh"   "Directory containing MH commands")
-(defvar mh-lib  "/usr/lib/mh"   "Directory containing MH commands")
+(defvar mh-progs "/usr/contrib/mh/bin"   "Directory containing MH commands")
+(defvar mh-lib  "/usr/contrib/lib/mh"   "Directory containing MH commands")
 ;(defvar mh-scan-prog "/u/reilly/lmh" "Get just messages to me")
-(defvar mh-scan-prog "/usr/bin/mh/scan" "Scan command for MH")
+(defvar mh-scan-prog "/usr/contrib/mh/bin/scan" "Scan command for MH")
 
-; mh-e no longer supports mh-visible-headers
-;(defvar mh-visible-headers "^Date: \\|^To: \\|^cc: \\|^Subject\\|^From:"
-;  "*If non-nil, contains a regexp specifying the headers to keep when cleaning.
-;Only used if `mh-clean-message-header' is non-nil.  Setting this variable
-;overrides `mh-invisible-headers'.")
-
-; so add to mh-invisible-header-fields
-
-(defvar mh-invisible-header-fields
-  '(
-"X-Proofpoint-Virus-Version:"
-"X-Proofpoint-Spam-Details:"
-"X-Enigmail-Version:"
-"X-YMail-OSG:"
-"X-IronPortListener:"
-"X-SBRS:"
-"X-IronPort-Anti-Spam-Filtered:"
-"X-IronPort-Anti-Spam-Result:"
-"X-AuditID:"
-"User-Agent:"
-"DKIM-Signature:"
-"X-RedHat-Spam-Score:"
-    "X-VirtualServer:"
-   "X-Destination-ID:"
-   "X-MailingID:"
-   "X-SEF-ZeroHour-RefID:"
-   "X-SMFBL:"
-   "X-SMHeaderMap:"
-   "X-VirtualServerGroup:"
-"X-Listbox-List-ID:"
-"X-Listbox-UUID:"
-"X-Mailer:"
-)
-  "Stuff I added")
-
-
-
-
-
+(defvar mh-visible-headers "^Date: \\|^To: \\|^cc: \\|^Subject\\|^From:"
+  "*If non-nil, contains a regexp specifying the headers to keep when cleaning.
+Only used if `mh-clean-message-header' is non-nil.  Setting this variable
+overrides `mh-invisible-headers'.")
 
 
 (setq mh-repl-formfile "/u/reilly/Mail/replcomps")
@@ -669,88 +360,6 @@ If it matches, mode MODE is selected.")
 (setq mh-clean-message-header t)
 
 
-(defvar my-mh-init-done nil "Non-`nil' when one-time mh-e settings made.")
-
-(defun my-mh-folder-mode-hook ()
-  "Hook to set key bindings in MH-Folder mode."
-  (if (not my-mh-init-done)             ; only need to bind the keys once 
-      (progn
-;             (local-set-key "/" 'search-msg)
-;	(local-set-key "b" 'mh-execute-commands)    ; better use of `b'
-;	(local-set-key "\\\M-r" 'mh-rescan-folder)
-	(setq mh-decode-mime-flag nil)
-(setq mh-clean-message-header t)
-(setq mh-colors-available-flag nil)
-
-(mh-ps-print-toggle-color)
-	(setq my-mh-init-done t))))
-
-;;; Emacs 19
-(add-hook 'mh-folder-mode-hook 'my-mh-folder-mode-hook)
-;;; Emacs 18
-;;;   (setq mh-folder-mode-hook (cons 'my-mh-folder-mode-hook
-;;;                               mh-folder-mode-hook))
-
-;;;Sat Dec  7 23:34:04 EST 2024
-;;day timer table
-(defun GROTmyday-watch-date (&optional arg reset)
-  "hack"
-  (message "1 %s" "NOT RUN myfind-watch-date")
-  (message "1 in hook filename >%s<" (buffer-file-name))
-
-   
-(if (string= "/home/reilly/Day-Timer" (buffer-file-name) )
-
-(progn 
-
-;;  (interactive)
-  (if (0)
-      (
-
-  (message "%s" "3 after end of buffer")
-  (message "%s" "2 NOT RUN2 myfind-watch-date")
-  (message "2 in hook filename %s" (buffer-file-name))
-
-  (goto-char (point-max))
-    (table-recognize-table)
-  )
-      )					;if 0
-
- ) 					;progn
-)					;if =
-)					;defun
-
-;;;in watch.el   (add-hook 'find-file-hook  #'myday-watch-date)
-
-
-;;;MH hack to change coding system to ascii
-(add-to-list 'file-coding-system-alist '("\\/ssd/Mail/Draft\\'" . us-ascii))
-;;;
-(defun my-write-file-functions()
-"hack to write in ascii"
-;;could also check if Draft is part of buffer-file-name
-;;this fails on the RPI machines
-;;(setq coding-system-for-write 'ascii)
-(message "da file %s" default-directory)
-(string-equal "/Src/MISC/" default-directory)
-   (message "dum file SM %s" default-directory) 
-(string-equal "/Src/MISC/" default-directory)
-   (setq coding-system-for-write 'ascii)
-
-; (vc-mode) 
-)
-
-(setq find-file-hooks 'my-write-file-functions)
-;;;(setq write-file-functions nil)
-
-
-(defun search-msg ()
-  "Search for a regexp in the current message."
-  (interactive)                         ; user function
-  (save-window-excursion
-    (other-window 1)                    ; go to next window
-    (isearch-forward-regexp)))          ; string search; hit return (ESC
-					;   in Emacs 18) when done
 
 
 
@@ -784,267 +393,518 @@ If it matches, mode MODE is selected.")
 
 (put 'upcase-region 'disabled nil)
 
-;(global-set-key "?" 'forward-paragraph)
-;(global-set-key "?" 'backward-paragraph)
+(global-set-key "Ý" 'forward-paragraph)
+(global-set-key "Û" 'backward-paragraph)
 
 ; For Mac
 ;      (global-set-key "" 'backward-kill-word)
 
 
-; this may have to be done as part of a hook
-;(setq mh-hook '(lamba nil ( progn (
-
-; (define-key mh-folder-mode-map "p" 'mh-previous-undeleted-msg)
-; (add-hook 'mh-mode-hook 'turn-off-font-lock)
-
-;;(setq mh-highlight-citation-style 'none)
-(setq highlight-nonselected-windows t)
-
-; ( setq mh-inc-prog "/u/reilly/bin_sh/banner_inc" )
-
-;; for 22.3.2 this does not work, does not pull in mail
-;; Nothing useful in *Messages* about why
-;;(setq mh-inc-folder-hook
-;; '(lambda nil  (progn ( setq mh-inc-prog "/u/reilly/bin_sh/banner_inc" ) ) ) )
-
-
-;      '(lambda nil  (progn  (shell-command "lockfile -r -1 /u/reilly/LOCKS_NOT_PAGED/ATOMIC_ACTION" nil)   (if (file-exists-p "/u/reilly/.real_mail") (delete-file "/u/reilly/.real_mail")) (generate-new-buffer "dfkjrtwbr934") (shell-command "rm -f /u/reilly/LOCKS_NOT_PAGED/ATOMIC_ACTION" "dfkjrtwbr934"  "dfkjrtwbr934")  )) ) 
-
-;
-;
-; Generic XTERM setup
-;
-;
-(message "%s generic e000 %s    %s    %s" (getenv "TERM")  (string-match "localhost" (getenv "TERM") )  (frame-height)  (frame-width))
-(if  (and x-initialized (string-match "localhost" (getenv "DISPLAY") ) )
-(progn
-
-  (message "%s" "resize e001")
-    (set-foreground-color "Wheat")
-    (set-background-color "DarkSlateBlue")
-    (set-cursor-color "Red")
-    (set-mouse-color "Green")
-    (setq visible-bell t)
-;    (if (< (frame-height) 6)
-	(set-frame-height (window-frame) 24)
-;      )
-;    (if (> (frame-width) 81)
-	(set-frame-width (window-frame) 81)
-;      )
-
-;;Thu 17 Mar 2022 11:01:13 AM EDT
-
-
-))					;end generic xterm setup
-
-
-(if (not (string-or-null-p window-system ))
-(if  (and x-initialized  )   (string-match "xterm" (getenv "TERM") )
-;(if  (string-match "xterm" (getenv "TERM") )
-(progn
-
-(message "%s" "fell for xterm")
-    (set-foreground-color "Wheat")
-    (set-background-color "DarkSlateBlue")
-    (set-cursor-color "Red")
-    (set-mouse-color "Green")
-    (setq visible-bell t)
-
-
-))					;end generic xterm setup
-)
-
-
-(if  (string-equal nil (getenv "TERM") )
-(progn
-
-(message "%s" "x2")
-    (set-foreground-color "Wheat")
-    (set-background-color "DarkSlateBlue")
-    (set-cursor-color "Red")
-    (set-mouse-color "Green")
-    (setq visible-bell t)
-
-
-))					;end generic xterm setup
 
 
 
-(if  (string-equal "000dumb" (getenv "TERM") )
-(progn
 
-(message "%s" "x3")
-    (set-foreground-color "Wheat")
-    (set-background-color "DarkSlateBlue")
-    (set-cursor-color "Red")
-    (set-mouse-color "Green")
-    (setq visible-bell t)
-     (normal-erase-is-backspace-mode)
-(message "%s"  "e1")
-
-))					;end generic xterm setup
-
-(if  (string-equal "dumb" (getenv "TERM") )
-
-(message "%s"  "e2")
-    (normal-erase-is-backspace-mode)
-)
-;
-; 
-; The hell of linux on a small screen at Penn
-;
-
-; (if  (string-match "130.91.181.251" (getenv "SSH_CLIENT") )    (progn (set-default-font "7x14")))
-
-
-; The hell of linux on a small screen at Penn at home
-
-; (if  (string-match "216.158.25.179" (getenv "SSH_CLIENT") )    (progn (set-default-font "8x16")))
-
-(setq grep-command "grep -d skip -HIn  -i ")
-(setq grep-find-command "find `pwd` -type f -not -path '*/\.svn'  -exec grep -HIn  -i  {}  \\;")
-
-
-
-(global-set-key "\C-\M-h" 'backward-kill-word)
-
-( blink-cursor-mode -1)
-(setq blink-cursor-blinks 1)		;might slow down the blinking
-
-( file-name-shadow-mode -1)
-
-(setq ansi-color-for-comint-mode nil)
-(global-hi-lock-mode 1)    ;change from -1
-(global-font-lock-mode -1)
 (global-unset-key "")
-
-(icomplete-mode 1)
-
-
-
-
-(if  (string-equal "xterm-color" (getenv "TERM") )
-(progn
-  (normal-erase-is-backspace-mode)
-(message "%s"  "e3")
-))
+; (set-frame-font "9x15")  ; use this for Excel at 636
+; (set-default-font "-adobe-courier-bold-r-normal--24-240-75-75-m-150-iso8859-1")
+;X    (set-foreground-color "DarkBlue")
+;X    (set-background-color "DarkGray")
+;X    (set-cursor-color "Red")
+;X    (set-mouse-color "Green")
+    (setq visible-bell t)
 
 
 
 
 
-(if  (string-equal "xtermlin" (getenv "TERM") )
-(progn
-;;;Sat Jan 18 13:09:15 EST 2014
+;; This fixes backspace, but only on terminal connections
+(if (not (getenv "DISPLAY") ) (normal-erase-is-backspace-mode 1) )
 
-;; (normal-erase-is-backspace-mode)
-;;(message "%s"  "e4")
-))
+; (set-default-font "8x13")
+;X    (set-foreground-color "DarkBlue")
+;X    (set-background-color "DarkGray")
+;X    (set-cursor-color "Red")
+;X    (set-mouse-color "Green")
+    (setq visible-bell t)
+
+(setq grep-command "grep -d skip -I -Hni ")
+;(setq grep-find-command "find `pwd` -type f -print0 | xargs -0 -e grep -n -I -i ")
+
+;(setq blink-cursor-delay 9999999)
+
+;(setq blink-cursor-interval 9999999)
+
+;(setq blink-cursor nil)
+
+;(setq blink-cursor-mode nil)
+
+(setq visible-cursor t)
+(blink-cursor-mode -1)
+
+(global-set-key "9" 'delete-frame)
+
+
+;            remember you might need 
+;X(normal-erase-is-backspace-mode)
+;            if on the system console
+
+
+;
+;  use this in converting perl to c
+;
+
+
+; (setq default-frame-alist (quote ((width . 80) (height . 55) (menu-bar-lines . 0))))
+
+; (setq initial-frame-alist (quote ((width . 80) (height . 55) (menu-bar-lines . 0))))
 
 
 
-(if  (string-equal nil (getenv "TERM") )
-(progn
- (normal-erase-is-backspace-mode)
-(message "%s"  "e5")
-
-))
 
 
-;;;
-;; if a frame is made in X11 it never gets the correct fore/back-ground or colors
-;;;
-(setq after-make-frame-functions '(progn
 
-(message "%s" "x4")
 
-    (set-foreground-color "Wheat")
-    (set-background-color "DarkSlateBlue")
+;(setq before-make-frame-hook 'frame-start-hook)
+(setq after-make-frame-functions 'frame-start-hook)
+
+(defun frame-start-hook (&optional arg)
+(frame-parameters arg)
+(x-focus-frame arg)
+(select-frame arg )			;cannot use this with before hook
+ (set-foreground-color "#692955")
+    (set-background-color "DarkGray")
     (set-cursor-color "Red")
     (set-mouse-color "Green")
     (setq visible-bell t)
+    (set-frame-font "10x20")
+     (message "10x20 345")
+(set-frame-height arg 20)
+(set-frame-width arg 80)
+(select-frame arg )
+)
+;X (transient-mark-mode -1)
+(global-unset-key "\C-x\C-m")
+(global-unset-key "\C-xn")
+;(global-set-key "\C-xn" 'compilemon)
 
 
+
+
+(global-unset-key "")
+(global-unset-key "")
+(global-unset-key "")
+
+
+;
+; make all frames have just one buffer
+; 
+(defun onebuffframe ()
+"It is early Sun morning"
+(let* ((frames (minibuffer-frame-list))
+	 (list frames))
+
+    (while (consp frames) 
+       (select-frame-set-input-focus (car frames))
+       (delete-other-window)
+;(recenter 4)
+       (setq frames (cdr frames))
+;       )
+      )
+)
+)
+
+  (defun postcompileengine (arg) "Do me" (interactive) 
+    (setq foo (get-buffer "*gud-minimon*"))
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "*gud-gdb*"))
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+
+    (setq foo (get-buffer "*compilation*"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "*Buffer List*"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "*Completions*"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "gtestutils.c"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "gtklabel.c"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "gmarshal"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "gclosure"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+    (setq foo (get-buffer "gsignal"))  
+    (if 
+        (buffer-live-p foo)
+        (kill-buffer foo)
+      )
+
+
+
+
+    (gdb (concat "beta gdb -q --annotate=3  " arg)) 
+)
+
+
+  (defun  postcompile () "Do me" (interactive) 
+    ( postcompileengine "/Src/Trade/Mon/minimon"
 ))
 
+;    (setq foo (get-buffer "*gud-minimon*"))
+;    (if 
+;        (buffer-live-p foo)
+;        (kill-buffer foo)
+;      )
+;    (setq foo (get-buffer "*compilation*"))  
+;    (if 
+;        (buffer-live-p foo)
+;        (kill-buffer foo)
+;      )
+;    (gdb "gdb -q --annotate=3  /Src/Trade/Mon/minimon") 
+;    )
 
+(global-set-key "r" 'postcompile)
 
-    (setq visible-bell t)
-
-
-
-(if  (string-equal "screen" (getenv "TERM") )
-(progn
- ;;(normal-erase-is-backspace-mode)
-
-))
-
-
-;; Sat Jun 13 21:06:01 EDT 2015
-;; stop mh-rmail from complaining when it does not have enough memory for undo 
-(load-library "warnings")
-(add-to-list 'warning-suppress-types '(undo discard-info))
-
-
-;; Sat Jun 13 21:05:32 EDT 2015
-;; stops some modes from splitting windows vertically, but not mh
-
-;;only set this on X windows
-
-;(setq split-height-threshold nil)
-;(setq split-width-threshold 0)
+(setq utf-translate-cjk-mode nil)
 
 
 
+;(setq gdb-use-separate-io-buffer t)  ; does not play well with (setq comint-scroll-to-bottom-on-input (quote all))
+;(setq gud-gdb-command-name "gdb -q --annotate=3")
+;(setq gud-tooltip-mode t)
+;(setq next-error-highlight 2.5)
+;(setq next-error-highlightsetq -no-select 2.5)
+;(setq which-function-mode t)
+;(setq gdb-find-source-frame nil)
 
-;  (add-to-list 'load-path "/home/reilly/.emacs.d/predictive")
-;  (add-to-list 'load-path "/home/reilly/.emacs.d/predictive/misc")
-;  (add-to-list 'load-path "/home/reilly/.emacs.d/predictive/latex")
-;  (add-to-list 'load-path "/home/reilly/.emacs.d/predictive/html")
-;  (add-to-list 'load-path "/home/reilly/.emacs.d/predictive/texinfo")
-;;  (require 'predictive)
+; repeat, to see if setting as hook makes it better
+                                       ;end mygdbhook
+(add-hook 'gdb-mode-hook 
+          (lambda ()
+;(setq gdb-use-separate-io-buffer t)  ; does not play well with (setq comint-scroll-to-bottom-on-input (quote all))
+;(setq gud-tooltip-mode t)
+;(setq next-error-highlightsetq -no-select 2.5)
+;(setq which-function-mode t)
+             (gdb-speedbar-auto-raise -1)
+             (setq gdb-find-source-frame nil)
+             (setq gdb-enable-debug t)
+             (setq gdb-find-source-frame nil)
+             (setq gdb-same-frame nil)
+             (setq gdb-show-main nil))
+;X  (transient-mark-mode -1)
+)
 
-;  (autoload 'predictive-mode "/path/to/predictive/predictive" "Turn on Predictive Completion Mode." t)
+;     (add-to-list 'default-frame-alist '((width .  80) (height . 19)))
+
+(if (string= (getenv "DISPLAY") "localhost:10.0" )
+  (progn         (set-frame-font "8x13" t)
+     (message "8x13 123")
+     (add-to-list 'default-frame-alist '(font . "8x13"))
+    (set-frame-height (window-frame) 24)
+    (set-frame-width (window-frame) 81)
+)
+  (progn ; (set-default-font "-apple-times-medium-r-normal--24-240-72-72-m-240-mac-roman" t)
+    (set-frame-font "10x20" t)
+;;this happens on MAC
+         (message "apple 4566")
+         ;;need to stop multibyte when pasted from buffer
+;;         (setq enable-multibyte-characters nil)
+
+;     (add-to-list 'default-frame-alist '(font . "-apple-times-medium-r-normal--24-240-72-72-m-240-mac-roman"))
+;     (add-to-list 'default-frame-alist '((width .  80) (height . 19)))
+     )
+)
+
+;X  (add-to-list 'default-frame-alist '(auto-raise-mode . nil))
+
+;;(load-file "/usr/share/emacs/site-lisp/ruby-mode.el")
+(load-library "compile")
+(setq compile-command " make ")
+
+(setq c-basic-offset 3)
+(setq use-dialog-box nil)               ;Sat Jan 31 18:45:05 EST 2009
+(setq special-display-buffer-names
+           '("*info*"  "*gud-gdb*")) ;Sat Jan 31 18:45:05 EST 2009
 
 
+
+(speedbar -1)
+;X  (auto-raise-mode -1)
+(setq initial-scratch-message nil)
+
+;Fri Feb  6 17:58:24 EST 2009
+; removing since did not fix problem
+;;(add-hook 'shell-mode-hook           (lambda ()             (set-process-filter proc 'comint-output-filter)))
+;(add-hook 'comint-mode-hook            (lambda ()(setq comint-output-filter-functions nil))) ;add-hook
+;(add-hook 'compilation-mode-hook (lambda ()(setq comint-output-filter-functions nil) (setq next-error-highlight 2.5)))
 
 ;; disable color crap
-;;;(setq-default global-font-lock-mode nil)
+(setq-default global-font-lock-mode nil)
+
+
+
+;;;;;;;;mouse wheel crap
+
+
+
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;;(defun compilation-buffer-name (args args22 args33) (generate-new-buffer-name (concat "*compilation" (file-relative-name buffer-file-name)   "*") ))
+;;))
+
+
+
+;  (defun compilemon () "Do me" (interactive) (find-file "/home/reilly/Trade/Mon/monitor.cpp" 1)(compile "make monitor")(gdb "gdb -ex run monitor"))
+
+  (defun compilemon () "Do me" (interactive) (find-file "/home/reilly/Trade/Mon/monitor.cpp" 1)(compile "make monitor &&  env LD_LIBRARY_PATH=/usr/beta/lib:/usr/local/lib:/usr/X11R7/lib/xorg/modules:/usr/lib:/usr/local/apache2/modules:/lib:/usr/X11R7/lib:/usr/lib/sse2:/usr/X11R7/lib/xorg/modules/linux:/usr/lib/qt-3.3/lib:/usr/local/ssl/lib:/usr/X11R7/lib/xorg/modules/extensions  PATH=/usr/X11R7.4/bin:/home/reilly/i686:/usr/java/jdk1.6.0_10/bin:/Pkg/apache-ant-1.7.1/bin:/home/reilly/bin_sh:/home/reilly/thunderbird:/home/reilly/firefox:/usr/X11R7/bin:/usr/local/bin:/usr/local/sbin:/usr/contrib/texmf/bin:/usr/contrib/mh/lib:/usr/contrib/mh/bin:/usr/contrib/bin:/usr/lib/qt-3.3/bin:/bin:/usr/bin:/etc:/usr/sbin:/sbin:/opt/openoffice.org3/program  ./monitor --g-fatal-warnings"))
+
+; (shell-command make... "*monitorcomp*")
+
+(setq ansi-color-for-comint-mode nil)
+
+(if  (not (string= (getenv  "XTERM_VERSION" ) nil))
+ (progn
+(normal-erase-is-backspace-mode 1)
+
+
+
+))
+
+
+    (set-foreground-color "Wheat")
+    (set-background-color "#692955")
+    (set-cursor-color "Red")
+    (set-mouse-color "Green")
+    (setq visible-bell t)
+
+(set-frame-font "9x15")
+(tty-suppress-bold-inverse-default-colors t)
+
+;; disable color crap
+(setq-default global-font-lock-mode nil)
+(global-font-lock-mode 0)
 
 (set-face-foreground 'minibuffer-prompt "white")
 
-  (normal-erase-is-backspace-mode)
 
-(message "%s" "xprecustom")
-;;;   fix text seen on screen set-terminal-coding-system
-;;; ??      default-terminal-coding-system
-;; and a different thing
-;;   (set-keyboard-coding-system nil)
-;; list-coding-systems
-;;
-;;confirm-kill-emacs   set to   yes-or-no-p
-(if
-    (and
-     (not (string-or-null-p window-system ) )
-     (not (string-equal "/root/.emacs" user-init-file))
-    )
-(progn
- (setq confirm-kill-emacs 'yes-or-no-p)
-;;;;stops emacs from exiting without confirmation
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(compilation-column-number ((t (:inherit font-lock-type-face :foreground "black"))))
+ '(compilation-error ((t (:inherit font-lock-warning-face :foreground "Red"))))
+ '(compilation-info ((((class color) (min-colors 16) (background light)) (:foreground "DarkBlue" :weight bold))))
+ '(compilation-line-number ((t (:inherit font-lock-variable-name-face :foreground "black"))))
+ '(compilation-warning ((((class color) (min-colors 16)) (:foreground "Red" :weight bold))))
+ '(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "AntiqueWhite"))))
+ '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "magenta1"))))
+ '(font-lock-comment-face ((t (:foreground "white smoke"))))
+ '(font-lock-constant-face ((((class color) (min-colors 88) (background light)) (:foreground "NavyBlue"))))
+ '(font-lock-doc-face ((t (:inherit font-lock-string-face :foreground "gray0"))))
+ '(font-lock-function-name-face ((((class color) (min-colors 88) (background light)) (:foreground "NavyBlue"))))
+ '(font-lock-negation-char-face ((t (:foreground "white"))))
+ '(font-lock-preprocessor-face ((t (:inherit font-lock-builtin-face))))
+ '(font-lock-regexp-grouping-backslash ((t (:inherit bold :foreground "white"))))
+ '(font-lock-regexp-grouping-construct ((t (:inherit bold :foreground "white"))))
+ '(font-lock-string-face ((t (:foreground "IndianRed3"))))
+ '(font-lock-variable-name-face ((((class color) (min-colors 88) (background dark)) (:foreground "NavajoWhite"))))
+ '(font-lock-warning-face ((t (:foreground "white")))))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(display-time-mode t)
+ '(grep-find-command
+   '("find . -type f -exec grep  -niH --null -e  \\{\\} +" . 42))
+ '(gud-gdb-command-name "ggdb --annotate=1")
+ '(gud-gud-gdb-command-name "ggdb --fullname")
+ '(ispell-program-name "/usr/bin/ispell")
+ '(large-file-warning-threshold nil)
+ '(package-selected-packages '(jupyter))
+ '(safe-local-variable-values
+   '((vc-prepare-patches-separately)
+     (diff-add-log-use-relative-names . t)
+     (vc-git-annotate-switches . "-w")
+     (hide-ifdef-env
+      '((TESTMODE . 0)
+        (MONDOVIASEC . 1)
+        (MONDOVIAGOOGLE . 0)
+        (MONDOVIAYAHOO . 0)
+        (TURNOFFGOOG . 1)
+        (NOVALA . 1)
+        (LOOP_NOT_IDLE . 1)
+        (LOOP_NOT_IDLE_GOOGT . 1)
+        (LOOP_NOT_IDLE_WORKERS . 1)
+        (LOOP_NOT_IDLE_PRINTM . 1)
+        (FAKEVALUE . 0)
+        (TRAPS . 1)
+        (BUG100 . 0)
+        (BUG101 . 0)
+        (BUG102 . 0)
+        (BUG103 . 0)
+        (FROMFILE . 1)
+        (PRINTMAIN . 0)
+        (GRAPHICSMODE . 1)
+        (EQGLIBIPC . 1)
+        (BOOST09 . 1)
+        (DBUS09 . 1)))
+     (hide-ifdef-env
+      '((TESTMODE . 0)
+        (MONDOVIASEC . 1)
+        (MONDOVIAGOOGLE . 0)
+        (MONDOVIAYAHOO . 0)
+        (TURNOFFGOOG . 1)
+        (NOVALA . 1)
+        (LOOP_NOT_IDLE . 1)
+        (LOOP_NOT_IDLE_GOOGT . 1)
+        (LOOP_NOT_IDLE_WORKERS . 1)
+        (LOOP_NOT_IDLE_PRINTM . 1)
+        (FAKEVALUE . 0)
+        (TRAPS . 1)
+        (BUG100 . 0)
+        (BUG101 . 0)
+        (BUG102 . 0)
+        (BUG103 . 0)
+        (FROMFILE . 1)
+        (PRINTMAIN . 0)
+        (GRAPHICSMODE . 1)
+        (BOOST09 . 1)
+        (DBUS09 . 1)))
+     (hide-ifdef-env
+      '((TESTMODE . 0)
+        (MONDOVIASEC . 1)
+        (MONDOVIAGOOGLE . 0)
+        (MONDOVIAYAHOO . 0)
+        (TURNOFFGOOG . 1)
+        (NOVALA . 1)
+        (LOOP_NOT_IDLE . 1)
+        (LOOP_NOT_IDLE_GOOGT . 1)
+        (LOOP_NOT_IDLE_WORKERS . 1)
+        (LOOP_NOT_IDLE_PRINTM . 1)
+        (FAKEVALUE . 0)
+        (TRAPS . 1)
+        (BUG100 . 0)
+        (BUG101 . 0)
+        (BUG102 . 0)
+        (BUG103 . 0)
+        (FROMFILE . 1)
+        (PRINTMAIN . 1)))
+     (hide-ifdef-initially t)
+     (hide-ifdef-env
+      '((TESTMODE . 0)
+        (MONDOVIASEC . 1)
+        (MONDOVIAGOOGLE . 0)
+        (MONDOVIAYAHOO . 0)
+        (TURNOFFGOOG . 1)
+        (NOVALA . 1)
+        (LOOP_NOT_IDLE . 1)
+        (LOOP_NOT_IDLE_GOOGT . 1)
+        (LOOP_NOT_IDLE_WORKERS . 1)
+        (LOOP_NOT_IDLE_PRINTM . 1)
+        (FAKEVALUE . 0)
+        (TRAPS . 1)
+        (BUG100 . 0)
+        (BUG101 . 0)
+        (BUG102 . 0)
+        (BUG103 . 0)
+        (FROMFILE . 1)
+        (PRINTMAIN . 0)
+        (__CHAR_BIT__ . 8)
+        (__FLT_EVAL_METHOD__ . 0)
+        (__FINITE_MATH_ONLY__ . 0)
+        (__APPLE_CC__ . 5484)
+        (__SCHAR_MAX__ . 127)
+        (__STDC_HOSTED__ . 1)
+        (__DBL_DIG__ . 15)
+        (__strong . 1)
+        (__APPLE__ . 1)
+        (__DECIMAL_DIG__ . 21)
+        (__LDBL_HAS_QUIET_NAN__ . 1)
+        (__DYNAMIC__ . 1)
+        (__GNUC__ . 4)
+        (__MMX__ . 1)
+        (__DBL_HAS_INFINITY__ . 1)
+        (OBJC_NEW_PROPERTIES . 1)
+        (__weak . 1)
+        (__SSE2_MATH__ . 1)
+        (__DBL_HAS_QUIET_NAN__ . 1)
+        (__NO_INLINE__ . 1)
+        (__i386 . 1)
+        (__FLT_MANT_DIG__ . 24)
+        (i386 . 1)
+        (__i386__ . 1)
+        (__FLT_RADIX__ . 2)
+        (__SSE_MATH__ . 1)
+        (__FLT_HAS_QUIET_NAN__ . 1)
+        (__FLT_HAS_INFINITY__ . 1)
+        (__LITTLE_ENDIAN__ . 1)
+        (__LDBL_MANT_DIG__ . 64)
+        (__CONSTANT_CFSTRINGS__ . 1)
+        (__FLT_DIG__ . 6)
+        (__FLT_MAX_EXP__ . 128)
+        (__DBL_MANT_DIG__ . 53)
+        (__SSE__ . 1)
+        (__MACH__ . 1)
+        (__GNUC_PATCHLEVEL__ . 1)
+        (__LDBL_HAS_INFINITY__ . 1)
+        (__PIC__ . 1)
+        (__SSE2__ . 1)
+        (__GNUC_MINOR__ . 0)
+        (__LDBL_DIG__ . 18)
+        (__GNUC_GNU_INLINE__ . 1)))))
+ '(show-paren-mode t)
+ '(transient-mark-mode t))
 
 
-					; (set-frame-font "12x24")
-  (set-frame-font "10x20")
-(message "%s" "x1  font to 10x20")
-
-))
-;;(message "%s" "xexit")
-
-
-
-
-(setq custom-file "~reilly/.emacs.d/custom.el")
-(load custom-file)
 
 
 (defun uncolor-after-load (&rest foo)
@@ -1053,93 +913,8 @@ If it matches, mode MODE is selected.")
 
 (add-to-list 'after-load-functions #'uncolor-after-load)
 
-;;;mergerx support
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
-(defvar mergerx-date-format "%Y-%m-%d"
-  "Format of date to insert with `insert-current-date-time' func
-See help of `format-time-string' for possible replacements")
-
-
-(defun mergerx-current-date ()
-  "insert the current date (1-week scope) into the current buffer."
-       (interactive)
-       (insert (format-time-string mergerx-date-format (current-time)))
-       (insert "\n")
-       )
-
-(defun mergerx-insert-current-date ()
-  "insert the current date (1-week scope) into the current buffer."
-       (interactive)
-       (insert (format-time-string mergerx-date-format (current-time)))
-       )
-
-(defun mergerx-finddate ()
-  "insert the current date (1-week scope) into the current buffer."
-       (interactive)
-       ;;go to lastdate line
-       (search-forward "lastrxdate")
-
-       ;;kill line
-       (move-beginning-of-line 1)
-       (kill-line 1)
-
-       ;; down line
-       (next-line)
-       
-       ;;yank line
-       (yank)
-
-       ;;go up line
-       (previous-line)
-
-       
-       (move-beginning-of-line 1)    ;;beg of line
-       (search-forward ".last")
-
-
-       ;;remove last
-       (delete-backward-char 4)
-       
-
-       ;;change date to today
-       (search-forward "'")
-       (delete-forward-char 10)
-       (mergerx-insert-current-date)
-
-       ;;go up line
-       (previous-line)
-       (previous-line)
-       
-
-       ;;insert last
-
-       (search-forward "med1.")
-       (insert "last")
-
-
-       );;;;END OF FIND       
-
-(defun mergerx-finddate2 ()
-  "insert the current date (1-week scope) into the current buffer."
-       (interactive)
-
-       
-
-
-
-;; left ' intact       (insert ("'"))
-       
-
-       
-       )
-(global-set-key "\C-x'" 'mergerx-finddate)
-
-(if (string= "/tmp/mergerx.py" (buffer-file-name) )
-    (message "Use C-X'")
-    )
-
-
-;;;(message "current buff filename %s"   (buffer-file-name))
 
 
 (defvar permanently-enabled-local-variables '(lexical-binding fill-column))
@@ -1152,11 +927,10 @@ See help of `format-time-string' for possible replacements")
 (setq enable-local-eval t)
 (setq enable-local-variables :all)
 
-;;https://emacs.stackexchange.com/questions/3673/how-to-make-vc-and-magit-treat-a-symbolic-link-to-a-real-file-in-git-repo-just
-(setq find-file-visit-truename t)
+;;stop deleting a region with backspace/del
+(setq delete-active-region 'nil)
 
-
-;;;;START WATCH SUPPORT
-;;;(add-to-list 'load-path "/home/reilly/elisp")
-;;;(load "watch")
-;;;;END WATCH SUPPORT
+;(set-frame-height arg 14)
+;(set-frame-width arg 80)
+;(set-frame-height (window-frame) 24)
+;(set-frame-width (window-frame) 81)

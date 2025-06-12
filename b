@@ -1,4 +1,4 @@
-;;; -*- Mode: Lisp -*-
+;;; -*- Mode: Lisp -*- sec  thurs
 ;;;
 ;;; Gnu Emacs initialization file (manta incarnation)
 
